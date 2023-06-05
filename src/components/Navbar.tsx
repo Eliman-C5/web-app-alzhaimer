@@ -2,7 +2,7 @@ import React from 'react'
 import { NavbarProps } from '@/interfaces/app_interfaces'
 import Link from 'next/link'
 import Image from 'next/image'
-import Logo from '../../public/images/logo.jpg'
+import Logo from '../../public/images/alzhaimer-logo.png'
 
 
 const pages: NavbarProps = [
@@ -32,7 +32,7 @@ export const Navbar = () => {
       <div className="flex gap-4">
       {
         pages.map(page => 
-          <Link href={page.src} key={page.name}>
+          <Link href={page.src} key={page.name} className='hover:text-sky-300'>
             {page.name}
           </Link>
         )
