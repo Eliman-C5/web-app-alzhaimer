@@ -4,6 +4,7 @@ import React from 'react'
 import QRCode from 'react-qr-code'
 import { PDFViewer ,Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
+// Probando para hacer git push
 // Create styles
 const styles = StyleSheet.create({
   viewer: {
