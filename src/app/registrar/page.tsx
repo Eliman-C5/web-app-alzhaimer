@@ -46,10 +46,10 @@ export default function Page() {
         <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg" />
         
         <fieldset>
-          <legend>Elige tu género</legend>
+          <legend>Seleccionar género de el adulto</legend>
           
           <div className="">
-            <input type="checkbox" id="masculino" name="masculino" checked />
+            <input type="checkbox" id="masculino" name="masculino" />
             <label>Másculino</label>
           </div>
           
