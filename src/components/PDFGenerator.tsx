@@ -2,52 +2,39 @@
 
 import React from 'react'
 import QRCode from 'react-qr-code'
-import { PDFViewer ,Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { PDFViewer ,Page, Text, View, Document, StyleSheet, Image, Canvas } from '@react-pdf/renderer';
 
 // Probando para hacer git push
 // Create styles
 const styles = StyleSheet.create({
-  viewer: {
-    
-  },
   page: {
     flexDirection: 'column',
     display: 'flex',
-    width: '80%',
+    width: '100%',
+    height: '100%',
     margin: 'auto',
-    backgroundColor: '#e4e4e4',
+    //backgroundColor: '#e4e4e4',
     justifyContent: 'center',
-    alignItems: 'center'  
+    alignItems: 'center' ,
+    padding: '2rem'
   },
-  view: {
-    
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
-  }
 });
 
 type PDFGeneratorProp = {
-  id: string
+  id: number,
+  adultname?: string
 }
 
 export const PDFGenerator = ({id}: PDFGeneratorProp) => {
   return (
-    // <PDFViewer style={styles.viewer}>
-    <div className="">
+    <PDFViewer style={{width: '100%', height: '90vh'}}>
       <Document>
-        <Page size="B2" style={styles.page}>
-          <View style={styles.section}>
-            <QRCode value={`localhost:3000/profile/${id}`} />
-          </View>
-          <View style={styles.section}>
-            <Text>Perfil de {id}</Text>
+        <Page size="A4" style={styles.page}>
+          <View>
+              <QRCode value={`https://web-app-alzhaimer.vercel.app/profile/${id}`} />
           </View>
         </Page>
       </Document>
-    </div>
-    // </PDFViewer>
+    </PDFViewer>
   )
 }
