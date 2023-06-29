@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar'
 import './globals.css'
+import { FormProvider } from '@/context/FormProvider'
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
+        <FormProvider>
         {children}
+        </FormProvider>
       </body>
     </html>
   )

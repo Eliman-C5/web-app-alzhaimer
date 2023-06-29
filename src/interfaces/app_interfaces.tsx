@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 export interface PropChildren {
   children: ReactNode
@@ -8,6 +8,10 @@ export type NavbarProps = {
   src: string,
   name: string
 }[]
+
+export type propChildren = {
+  children: ReactNode
+}
 
 export type inputProps = {
   id: number,
@@ -21,9 +25,14 @@ export type userProps = {
   adultname: string,
   adultage: number | null,
   userphone: number | null,
-  image: string,
+  image: string | ChangeEvent<HTMLInputElement> | null | FileList,
   genre: string,
   illnes: string,
   adultAddress: string,
   id: number
+}
+
+export type formTypes = {
+  datosFormulario: userProps,
+  setDatosFormulario: React.Dispatch<React.SetStateAction<userProps>>
 }

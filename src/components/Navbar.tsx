@@ -24,12 +24,15 @@ export const Navbar = () => {
         <Image 
           src={Logo}
           alt='Logo de la aplicacion'
-          className='h-[100px] w-[100px]'
+          width={100}
+          height={100}
+          priority
+          className='w-10/12 sm:w-full'
         />
       </Link>
       
       
-      <div className="flex gap-4">
+      <div className="flex gap-2 sm:gap-4">
       {
         pages.map(page => 
           <Link href={page.src} key={page.name} className='hover:text-sky-300'>
