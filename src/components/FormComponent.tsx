@@ -9,11 +9,11 @@ import { GenreCheckboxes } from './GenreCheckboxes'
 
 type formComponentTypes = {
   onSubmit: any,
-  profilePage: string,
+  profileId: number,
   isDataCorrect: boolean
 }
 
-export const FormComponent = ({onSubmit, profilePage, isDataCorrect}: formComponentTypes) => {
+export const FormComponent = ({onSubmit, profileId, isDataCorrect}: formComponentTypes) => {
 
   const {datosFormulario, setDatosFormulario} = useContext(FormContext)
 
@@ -61,9 +61,7 @@ export const FormComponent = ({onSubmit, profilePage, isDataCorrect}: formCompon
   useEffect(() => {
   
     console.log(datosFormulario.id)
-  
-    //setDatosFormulario({...datosFormulario, id: Math.round(Math.random() * 10000000)})
-  
+    
   })
 
   return (
@@ -96,14 +94,14 @@ export const FormComponent = ({onSubmit, profilePage, isDataCorrect}: formCompon
       
       <div className={`${isDataCorrect ? 'block' : 'hidden'} mt-8 flex flex-col gap-4`}>
         <button 
-          onClick={() => router.push(profilePage)} 
-          className={`rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] font-bold`}
+          onClick={() => router.push(`/profile/${profileId}`)} 
+          className={`rounded-[15px] bg-blue-400 text-white hover:opacity-90 p-[6px] font-bold`}
         >
           Ir a la página de perfil del usuario
         </button>
         <p className='text-center'>o</p>
-        <div className="bg-[#e4e4e4] p-4 my-8">
-          <QRCode value={`https://web-app-alzhaimer.vercel.app/profile/${datosFormulario.id}`} className='mx-auto' />
+        <div className="bg-[#e4e4e4] p-4 my-4">
+          <QRCode value={`https://web-app-alzhaimer.vercel.app/profile/${profileId}`} className='mx-auto' />
         </div>
       </div>
       

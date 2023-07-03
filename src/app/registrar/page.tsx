@@ -7,7 +7,7 @@ import React, { useState, useContext } from 'react'
 
 export default function Page() {
   
-  const [profilePage, setProfilePage] = useState<string>('/404');
+  const [profileId, setProfileId] = useState<number>(404);
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
   
   const {datosFormulario, setDatosFormulario, images} = useContext(FormContext)
@@ -40,7 +40,7 @@ export default function Page() {
     client.fetch('*[_type == "users"]').then(res => console.log(res))
     
     //Establecer el id de la pagina de perfil
-    setProfilePage(`/profile/${datosFormulario.id}`)
+    setProfileId(datosFormulario.id)
     
     //Mostrar boton que redirige a la pagina de perfil
     setIsDataCorrect(true);
@@ -54,7 +54,7 @@ export default function Page() {
   return (
     <FormComponent 
       onSubmit={onSubmit} 
-      profilePage={profilePage} 
+      profileId={profileId} 
       isDataCorrect={isDataCorrect} 
     />
   )

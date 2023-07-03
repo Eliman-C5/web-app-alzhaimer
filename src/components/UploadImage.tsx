@@ -29,7 +29,7 @@ export const UploadImage = () => {
   }
   
   return (
-    <div className='my-8'>
+    <div className='my-8 flex flex-col gap-4'>
       <label>Carga una imagen de aproximadamente 500px de ancho y alto</label>
       <input 
         type='file' 

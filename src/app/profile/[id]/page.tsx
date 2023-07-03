@@ -47,7 +47,7 @@ export default function Page ({}) {
               src={user.image}
               width={500}
               height={500}
-              className='max-w-[500px] max-h-[500px]'
+              className='w-full my-8'
               alt='Imagen de perfil de usuario'
             />            
             <p>2. De {user.adultage} años de edad</p>
@@ -61,7 +61,7 @@ export default function Page ({}) {
             <p>7. Dirección: {user.adultAddress}</p>
           </div>  
           
-          <Link href={`/pdf/${profileID}`} target='_blank' className='rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] px-[10px] mx-auto flex w-2/5 justify-center mt-8 font-bold'>
+          <Link href={`/pdf/${profileID}`} target='_blank' className='rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] px-[10px] mx-auto flex w-3/5 md:w-2/5 justify-center mt-8 font-bold'>
             Descargar PDF
           </Link>
           
