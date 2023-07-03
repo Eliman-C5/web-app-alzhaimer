@@ -35,10 +35,11 @@ export const PDFGenerator = ({id, users}: PDFGeneratorProp) => {
                   <Text style={{marginTop:"8px", marginBottom: "8px"}}>
                     Este es {user.adultname}, de género {user.genre} y de {user.adultage} años de edad
                   </Text>
-                  <Image 
+                  <img src={user.image} style={{width: '500px', height: '500px'}} />
+                  {/* <Image 
                     src={user.image}
                     style={{width: '500px', height: '500px'}}
-                  />
+                  /> */}
                   <Text style={{marginTop:"8px", marginBottom: "8px"}}>Cuenta con patologías? {user.illnes}</Text>
                   <Text style={{marginTop:"8px", marginBottom: "8px"}}>La dirección en la que vive es: {user.adultAddress}</Text>
                   <Text style={{marginTop:"8px", marginBottom: "8px"}}>Su responsable es {user.username} y el número de contacto es {user.userphone}</Text>
