@@ -1,17 +1,19 @@
 import { FormContext } from '@/context/FormProvider'
 import { inputProps } from '@/interfaces/app_interfaces'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { InputComponent } from './InputComponent'
 import { useRouter } from 'next/navigation'
+import { UploadImage } from './UploadImage'
+import QRCode from 'react-qr-code'
+import { GenreCheckboxes } from './GenreCheckboxes'
 
 type formComponentTypes = {
   onSubmit: any,
-  setImageAsset: any,
   profilePage: string,
   isDataCorrect: boolean
 }
 
-export const FormComponent = ({onSubmit, setImageAsset, profilePage, isDataCorrect}: formComponentTypes) => {
+export const FormComponent = ({onSubmit, profilePage, isDataCorrect}: formComponentTypes) => {
 
   const {datosFormulario, setDatosFormulario} = useContext(FormContext)
 
@@ -55,6 +57,14 @@ export const FormComponent = ({onSubmit, setImageAsset, profilePage, isDataCorre
   ]
   
   const router = useRouter();
+  
+  useEffect(() => {
+  
+    console.log(datosFormulario.id)
+  
+    //setDatosFormulario({...datosFormulario, id: Math.round(Math.random() * 10000000)})
+  
+  })
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between lg:p-[24px]" onSubmit={onSubmit}>
@@ -72,54 +82,30 @@ export const FormComponent = ({onSubmit, setImageAsset, profilePage, isDataCorre
           />)
         }
         
-        <input 
-          type="file" 
-          name="imagen" 
-          id="imagen" 
-          accept="image/png, image/jpeg"
-          onChange={(e) => {
-            setImageAsset(e.target.files)
-            console.log(e.target.files)
-          }} 
-        />
+        <UploadImage />
         
-        <fieldset>
-          <legend>Seleccionar género de el adulto</legend>
-          
-          <div className="">
-            <input 
-              type="checkbox" 
-              id="masculino" 
-              name="masculino" 
-              onClick={() => setDatosFormulario({...datosFormulario, genre: 'Masculino'})}
-            />
-            <label>Másculino</label>
-          </div>
-          
-          <div className="">
-            <input 
-              type="checkbox" 
-              id="femenino" 
-              name="femenino" 
-              onClick={() => setDatosFormulario({...datosFormulario, genre: 'Femenino'})}
-            />
-            <label>Femenino</label>
-          </div>
-          
-        </fieldset>
-        
-        <input type="number" name="id" id="id" className='hidden' value={datosFormulario.id} />
-        
-        <button className="w-full rounded-[15px] bg-blue-400 hover:opacity-90 py-[6px] font-bold">Enviar</button>
+        <GenreCheckboxes datosFormulario={datosFormulario} setDatosFormulario={setDatosFormulario} />
+                
+        <button 
+          className="w-full rounded-[15px] bg-blue-400 hover:opacity-90 py-[6px] font-bold"
+        >
+          Enviar
+        </button>
         
       </form>
       
-      <button 
-        onClick={() => router.push(profilePage)} 
-        className={`rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] font-bold ${isDataCorrect ? 'block' : 'hidden'} `}
-      >
-      Ir a la página de perfil del usuario
-      </button>
+      <div className={`${isDataCorrect ? 'block' : 'hidden'} mt-8 flex flex-col gap-4`}>
+        <button 
+          onClick={() => router.push(profilePage)} 
+          className={`rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] font-bold`}
+        >
+          Ir a la página de perfil del usuario
+        </button>
+        <p className='text-center'>o</p>
+        <div className="bg-[#e4e4e4] p-4 my-8">
+          <QRCode value={`https://web-app-alzhaimer.vercel.app/profile/${datosFormulario.id}`} className='mx-auto' />
+        </div>
+      </div>
       
     </main>
   )

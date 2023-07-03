@@ -6,6 +6,8 @@ import { redirect, usePathname } from 'next/navigation';
 import { userProps } from '@/interfaces/app_interfaces';
 import { client } from '@/sanity/schemas';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getIdPath } from '@/helpers/getIdPath';
 
 export default function Page ({}) {
 
@@ -13,34 +15,6 @@ export default function Page ({}) {
   
   const [users, setUsers] = useState<userProps[]>([])
   const [profileID, setProfileID] = useState<number>(404)
-  
-  const getIdPath = () => {
-  
-    const pathArray = pathname.split('')
-    
-    let idPath = ''
-    
-    pathArray.map(path => {
-      
-      path === '0' ||
-      path === '1' ||
-      path === '2' ||
-      path === '3' ||
-      path === '4' ||
-      path === '5' ||
-      path === '6' ||
-      path === '7' ||
-      path === '8' ||
-      path === '9'
-    ? 
-      idPath += path
-    : ''
-    
-    })
-    
-    return idPath
-  
-  }
   
   useEffect(() => {
   
@@ -51,7 +25,7 @@ export default function Page ({}) {
       
       setUsers(res)
       
-      setProfileID(Number(getIdPath()))
+      setProfileID(Number(getIdPath(pathname)))
       
       console.log(profileID)
       
@@ -69,6 +43,13 @@ export default function Page ({}) {
         
           <div className="">
             <p>1. Este es el perfil de {user.adultname}</p>
+            <Image 
+              src={user.image}
+              width={500}
+              height={500}
+              className='max-w-[500px] max-h-[500px]'
+              alt='Imagen de perfil de usuario'
+            />            
             <p>2. De {user.adultage} años de edad</p>
             <p>3. De género {user.genre}</p>
             <ul>
@@ -79,10 +60,6 @@ export default function Page ({}) {
             <p>6. Número de contacto: {user.userphone}</p>
             <p>7. Dirección: {user.adultAddress}</p>
           </div>  
-          
-          <div className="bg-[#e4e4e4] p-4 my-8">
-            <QRCode value={`https://web-app-alzhaimer.vercel.app/profile/${user.id}`} className='mx-auto' />
-          </div>
           
           <Link href={`/pdf/${profileID}`} target='_blank' className='rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] px-[10px] mx-auto flex w-2/5 justify-center mt-8 font-bold'>
             Descargar PDF

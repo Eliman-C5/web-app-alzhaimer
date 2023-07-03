@@ -3,24 +3,20 @@
 import { FormComponent } from '@/components/FormComponent'
 import { FormContext } from '@/context/FormProvider'
 import { client } from '@/sanity/schemas'
-//import * as fs from 'node:fs';
-//import { createReadStream } from 'fs'
-//import { basename } from 'path'
 import React, { useState, useContext } from 'react'
 
 export default function Page() {
   
   const [profilePage, setProfilePage] = useState<string>('/404');
   const [isDataCorrect, setIsDataCorrect] = useState<boolean>(false);
-  const [imageAsset, setImageAsset] = useState<any>()
   
-  const {datosFormulario, setDatosFormulario} = useContext(FormContext)
+  const {datosFormulario, setDatosFormulario, images} = useContext(FormContext)
   
   //Cambiar el any
   const onSubmit = (e: any) => {
     e.preventDefault();
     
-    console.log(datosFormulario.id, imageAsset[0])
+    console.log(datosFormulario.id, images)
     
     //Creando el doc
     const doc = {
@@ -30,6 +26,7 @@ export default function Page() {
       adultname: datosFormulario.adultname,
       adultage: datosFormulario.adultage,
       adultAddress: datosFormulario.adultAddress,
+      image: images,
       genre: datosFormulario.genre,
       illnes: datosFormulario.illnes,
       userphone: datosFormulario.userphone
@@ -38,25 +35,6 @@ export default function Page() {
     // Envía los datos a Sanity
     client.create(doc)
     .catch(error => console.log(error));
-    
-    //Enviando imagen
-    client.assets.upload('image', imageAsset[0].type, {
-      filename: imageAsset[0].name
-    })
-    .then(imageRespond => {
-      return client.patch(String(datosFormulario.id))
-      .set({
-        theImageField: {
-          _type: 'image',
-          asset: {
-            _type: "reference",
-            _ref: imageRespond._id
-          }
-        }
-      })
-      .commit()
-    })
-    .then(() => console.log('done'))
     
     //Trae los datos de Sanity
     client.fetch('*[_type == "users"]').then(res => console.log(res))
@@ -78,7 +56,6 @@ export default function Page() {
       onSubmit={onSubmit} 
       profilePage={profilePage} 
       isDataCorrect={isDataCorrect} 
-      setImageAsset={setImageAsset} 
     />
   )
 }

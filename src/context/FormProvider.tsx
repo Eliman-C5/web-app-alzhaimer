@@ -7,6 +7,7 @@ export const FormContext = createContext<formTypes>({} as formTypes);
 
 export const FormProvider = ({children}: propChildren) => {
 
+  const [images, setImages]= useState('')
   const [datosFormulario, setDatosFormulario] = useState<userProps>({
     username: '',
     adultname: '',
@@ -22,7 +23,9 @@ export const FormProvider = ({children}: propChildren) => {
   return (
     <FormContext.Provider value={{
       datosFormulario,
-      setDatosFormulario
+      setDatosFormulario,
+      images,
+      setImages
     }}>
     {children}
     </FormContext.Provider>

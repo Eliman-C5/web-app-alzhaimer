@@ -29,7 +29,7 @@ export default {
     },
     {
       name: 'image',
-      type: 'image',
+      type: 'string',
       title: 'Imagen del adulto mayor'
     },
     {

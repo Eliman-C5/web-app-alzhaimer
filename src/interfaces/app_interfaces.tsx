@@ -25,7 +25,7 @@ export type userProps = {
   adultname: string,
   adultage: number | null,
   userphone: number | null,
-  image: string | ChangeEvent<HTMLInputElement> | null | FileList,
+  image: string | ChangeEvent<HTMLInputElement> | null | FileList | any,
   genre: string,
   illnes: string,
   adultAddress: string,
@@ -34,5 +34,7 @@ export type userProps = {
 
 export type formTypes = {
   datosFormulario: userProps,
-  setDatosFormulario: React.Dispatch<React.SetStateAction<userProps>>
+  setDatosFormulario: React.Dispatch<React.SetStateAction<userProps>>,
+  images: string | ChangeEvent<HTMLInputElement> | null | FileList | any,
+  setImages: React.Dispatch<any>
 }
