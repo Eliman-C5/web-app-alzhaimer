@@ -5,7 +5,7 @@ import { InputComponent } from './InputComponent'
 import { useRouter } from 'next/navigation'
 import { UploadImage } from './UploadImage'
 import { jsPDF } from 'jspdf'
-import { QRCodeCanvas } from "qrcode.react"
+// import { QRCodeCanvas } from "qrcode.react"
 import QRcode from 'qrcode.react'
 import { GenreCheckboxes } from './GenreCheckboxes'
 
@@ -94,7 +94,7 @@ export const FormComponent = ({onSubmit, profileId, isDataCorrect}: formComponen
     },
     {
       id: 5,
-      placeholder: 'Sufre de alguna enfermedad o tiene alguna patología?',
+      placeholder: 'Ingresar enfermedad patología',
       type: 'string',
       // pattern: '/[A-Za-z]/',
       // maxLength: 25,
@@ -102,7 +102,7 @@ export const FormComponent = ({onSubmit, profileId, isDataCorrect}: formComponen
     },
     {
       id: 6,
-      placeholder: 'Ingresar dirección del lugar de residencia del adulto mayor',
+      placeholder: 'Ingresar dirección de residencia',
       type: 'string',
       // pattern: '/[A-Za-z]/',
       // maxLength: 30,
