@@ -94,7 +94,7 @@ export const FormComponent = ({onSubmit, profileId, isDataCorrect}: formComponen
     },
     {
       id: 5,
-      placeholder: 'Ingresar enfermedad patología',
+      placeholder: 'Ingresar enfermedad o patología',
       type: 'string',
       // pattern: '/[A-Za-z]/',
       // maxLength: 25,
