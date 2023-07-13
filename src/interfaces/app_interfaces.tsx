@@ -17,6 +17,8 @@ export type inputProps = {
   id: number,
   placeholder: string,
   type: string,
+  pattern: string,
+  maxLength: number,
   onChangeFn: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

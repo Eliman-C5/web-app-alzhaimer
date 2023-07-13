@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from 'react'
-import QRCode from 'react-qr-code'
+// import QRCode from 'react-qr-code'
 import { redirect, usePathname } from 'next/navigation';
 import { userProps } from '@/interfaces/app_interfaces';
 import { client } from '@/sanity/schemas';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Image from 'next/image';
 import { getIdPath } from '@/helpers/getIdPath';
 
@@ -61,9 +61,9 @@ export default function Page ({}) {
             <p>7. Dirección: {user.adultAddress}</p>
           </div>  
           
-          <Link href={`/pdf/${profileID}`} target='_blank' className='rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] px-[10px] mx-auto flex w-4/5 md:w-2/5 justify-center mt-8 font-bold'>
+          {/* <Link href={`/pdf/${profileID}`} target='_blank' className='rounded-[15px] bg-blue-400 text-white hover:opacity-90 py-[6px] px-[10px] mx-auto flex w-4/5 md:w-2/5 justify-center mt-8 font-bold'>
             Descargar PDF
-          </Link>
+          </Link> */}
           
         </div>)
       
