@@ -3,8 +3,8 @@ import React from 'react'
 type inputProps = {
   type: string,
   placeholder: string,
-  pattern: string,
-  maxLength: number,
+  pattern?: string,
+  maxLength?: number,
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
